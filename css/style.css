@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
+
+
+@font-face {
+  font-family: 'Ancient-Tulip';
+  src: url('fonts/Ancient-Tulip.ttf') format('truetype');
+} 
+
+@font-face {
+  font-family: "OffenbacherSchwabacherCAT";
+  src: url("fonts/OfenbacherSchwabCAT.ttf") format('truetype');
+}
+
+* {
+  margin: 0;
+  
+}
+
+body {
+  font-family: "Open Sans", Arial, sans-serif;
+  color: #515151;
+  background-color: #ebeaea
+}
+
+.exInfo {
+  margin: 25px 25%;
+}
+
+.exInfo > img {
+  width: 17em;
+  margin: 0 auto;
+  display: block;
+
+}
+
+.exInfo > h1 {
+  text-align: center;
+}
+
+.exInfo > p {
+  text-align: center;
+}
+
+.container {
+  margin: 0 30% 5% 30%;
+}
+
+h1 {
+  font-family: OffenbacherSchwabacherCAT, Arial, sans-serif;
+}
+
+p {
+  font-family: Ancient-Tulip, Arial, sans-serif;
+}
+
+form {
+font-family: "OffenbacherSchwabacherCAT", "Ancient-Tulip", sans-serif;
+}
+
+form {
+  margin: 1.5em 0 0 0;
+}
+form > * {
+  margin: 0 0 1.5em 0;
+}
+
+label {
+  text-align: center;
+}
+
+
+/*  Select  */
+span.msg,
+span.choose {
+  color: #555;
+  padding: 5px 0 10px;
+  display: inherit;
+}
+
+input, textarea {
+  font-family: OffenbacherSchwabacherCAT, Arial, sans-serif;
+  margin: 0 5%;
+  width: 90%;
+  transition: all .5s ease;
+  font-size: 1.7em;
+  color: #474747;
+  height: 2.2em;
+  text-align: center;
+
+  background-color: #fff;
+  left: 0;
+  margin-top: 1px;
+  box-shadow: 0 1px 2px rgb(204, 204, 204);
+  border-radius: 0 1px 2px 2px;
+  overflow: hidden;
+  max-height: 10.5em;
+  transition: all .2s ease-in-out;
+  cursor: pointer;
+  border: none;
+  min-width: 10.5em;
+}
+
+input:hover {
+  box-shadow: 0 0 4px rgb(204, 204, 204);
+  border-radius: 2px 2px 0 0;
+  background-color: #f8f8f8;
+}
+
+input:active {
+  background-color: #f8f8f8;
+}
+
+input:focus {
+  outline: #0E592A
+}
+
+
+.time_date:first-child, #date {
+  width: fit-content;
+}
+
+
+/*Styling Selectbox*/
+
+.dropdown {
+  font-family: OffenbacherSchwabacherCAT, Arial, sans-serif;
+  margin: 0 5%;
+  width: 90%;
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 0 2px rgb(204, 204, 204);
+  transition: all .5s ease;
+  position: relative;
+  font-size: 1.7em;
+  color: #474747;
+  height: 2.2em;
+  text-align: center;
+  min-width: 10.5em;
+}
+
+.dropdown .select {
+  cursor: pointer;
+  display: block;
+  padding: 10px
+}
+
+.dropdown .select>i {
+  font-size: 1em;
+  color: #888;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+  float: right;
+  line-height: 1em;
+}
+
+.dropdown:hover {
+  box-shadow: 0 0 4px rgb(204, 204, 204)
+}
+
+.dropdown:active {
+  background-color: #f8f8f8
+}
+
+.dropdown.active:hover,
+.dropdown.active {
+  box-shadow: 0 0 4px rgb(204, 204, 204);
+  border-radius: 2px 2px 0 0;
+  background-color: #f8f8f8
+}
+
+.dropdown.active .select>i {
+  transform: rotate(-90deg)
+}
+
+.dropdown .dropdown-menu {
+  position: absolute;
+  background-color: #fff;
+  width: 100%;
+  left: 0;
+  margin-top: 1px;
+  box-shadow: 0 1px 2px rgb(204, 204, 204);
+  border-radius: 0 1px 2px 2px;
+  overflow: hidden;
+  display: none;
+  max-height: 10.5em;
+  overflow-y: auto;
+  z-index: 9
+}
+
+.dropdown .dropdown-menu li {
+  padding: 10px;
+  transition: all .2s ease-in-out;
+  cursor: pointer
+}
+
+.dropdown .dropdown-menu {
+  padding: 0;
+  list-style: none
+}
+
+.dropdown .dropdown-menu li:hover {
+  background-color: #f2f2f2
+}
+
+.dropdown .dropdown-menu li:active {
+  background-color: #e2e2e2
+}
+
+.time_date {
+  margin: 1.5em 0;
+}
+
+#ename, #etime, #edescription, #edate, #eprice, #mapInput, #enter, #res {
+  transition: ease-in-out;
+  display: none;
+}
+
+
+#etime {
+  width: fit-content;
+}
+
+#edate {
+  width: fit-content;
+}
+
+#edescription {
+  transition:  ease-in-out;
+  line-height: 50px;
+}
+
+#edescription:focus {
+  height: 15em;
+  outline: none;
+  transition: ease;
+}
+
+
+code {
+  margin: 5%;
+  font-family: monospace;
+  border: 1px solid;
+  border-radius: 2.5%;
+  border-color: #888;
+  padding: 10%;
+  background-color: black;
+  color: white;
+  display: block;
+  height: fit-content;
+  width: 70%;
+  display: none;
+  cursor: pointer;
+}
