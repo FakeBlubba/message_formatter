@@ -13,7 +13,6 @@
 
 * {
   margin: 0;
-  
 }
 
 body {
@@ -23,7 +22,7 @@ body {
 }
 
 .exInfo {
-  margin: 25px 25%;
+  margin: 5% 15%;
 }
 
 .exInfo > img {
@@ -35,14 +34,16 @@ body {
 
 .exInfo > h1 {
   text-align: center;
+  font-size: 3.5em;
 }
 
 .exInfo > p {
   text-align: center;
+  font-size: 1.3em;
 }
 
 .container {
-  margin: 0 30% 5% 30%;
+  margin:  0 15% 15%;
 }
 
 h1 {
@@ -51,6 +52,7 @@ h1 {
 
 p {
   font-family: Ancient-Tulip, Arial, sans-serif;
+  font-size: 1.5em;
 }
 
 form {
@@ -60,6 +62,7 @@ font-family: "OffenbacherSchwabacherCAT", "Ancient-Tulip", sans-serif;
 form {
   margin: 1.5em 0 0 0;
 }
+
 form > * {
   margin: 0 0 1.5em 0;
 }
@@ -69,19 +72,10 @@ label {
 }
 
 
-/*  Select  */
-span.msg,
-span.choose {
-  color: #555;
-  padding: 5px 0 10px;
-  display: inherit;
-}
-
 input, textarea {
   font-family: OffenbacherSchwabacherCAT, Arial, sans-serif;
   margin: 0 5%;
   width: 90%;
-  transition: all .5s ease;
   font-size: 1.7em;
   color: #474747;
   height: 2.2em;
@@ -114,18 +108,10 @@ input:focus {
   outline: #0E592A
 }
 
-
-.time_date:first-child, #date {
-  width: fit-content;
-}
-
-
-/*Styling Selectbox*/
-
 .dropdown {
   font-family: OffenbacherSchwabacherCAT, Arial, sans-serif;
-  margin: 0 5%;
-  width: 90%;
+  margin: 0 5% 4% 5%;
+  width: 91%;
   display: inline-block;
   background-color: #fff;
   border-radius: 2px;
@@ -136,7 +122,7 @@ input:focus {
   color: #474747;
   height: 2.2em;
   text-align: center;
-  min-width: 10.5em;
+  min-width: 8em;
 }
 
 .dropdown .select {
@@ -207,33 +193,56 @@ input:focus {
   background-color: #e2e2e2
 }
 
-.time_date {
-  margin: 1.5em 0;
+.time_date_box {
+  margin: 2em 0;
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
 }
 
-#ename, #etime, #edescription, #edate, #eprice, #mapInput, #enter, #res {
+
+.i_fields{
   transition: ease-in-out;
   display: none;
 }
 
 
-#etime {
-  width: fit-content;
-}
-
-#edate {
-  width: fit-content;
-}
-
 #edescription {
-  transition:  ease-in-out;
   line-height: 50px;
+  -webkit-transition: all 0.5s 0s ease-out;
+  -moz-transition: all 0.5s 0s ease-out;
+  -o-transition: all 0.5s 0s ease-out;
+  transition: all 0.5s 0s ease-out;
 }
 
 #edescription:focus {
   height: 15em;
   outline: none;
-  transition: ease;
+}
+
+
+.btns, .btns:hover, .btns:active {
+  font-family: 'Ancient-Tulip', arial, sans-serif;
+  color: #f2c615;
+  background-color: #185b32;
+  border: 3.5px solid #f2c615;
+  -webkit-transition: all 0.5s 0s ease-out;
+  -moz-transition: all 0.5s 0s ease-out;
+  -o-transition: all 0.5s 0s ease-out;
+  transition: all 0.5s 0s ease-out;
+
+}
+
+.btns:hover {
+  -webkit-box-shadow: 0px 0px 20px 0px #000000; 
+  box-shadow: 0px 0px 20px 0px #000000;
+
+}
+
+.btns:active {
+  -webkit-box-shadow: inset 0px 0px 20px 0px #000000; 
+  box-shadow: inset 0px 0px 20px 0px #000000;
+
 }
 
 
@@ -241,7 +250,7 @@ code {
   margin: 5%;
   font-family: monospace;
   border: 1px solid;
-  border-radius: 2.5%;
+  border-radius: 2.5px;
   border-color: #888;
   padding: 10%;
   background-color: black;
@@ -251,4 +260,28 @@ code {
   width: 70%;
   display: none;
   cursor: pointer;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .time_date_box {
+    margin: 1em 0;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .time_date_box > input {
+    width: 90%;
+    
+  }
+  
+
+
 }

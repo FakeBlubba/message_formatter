@@ -8,7 +8,7 @@
   <meta name="author" content="Federico Bianchetti">
   <link  rel="stylesheet" href="css/style.css"  type="text/css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="media/favicon.jpg">
+  <link rel="icon" href="media/favicon.png">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -17,13 +17,12 @@
 <body>
   <div class="exInfo">
     <h1 id="exHTitle">Titolo</h1>
-    <img src="media/Propic trasparente.png" />
+    <img src="media/logo.png" />
     <p id="exDesc">Descrizione Esercizio</p>
   </div>
 
 
   <div class="container">
-    <p>Compila il form di seguito per formattare il tuo messaggio:</p>
 
     <form action="" method="">
 
@@ -47,20 +46,19 @@
 
 
       <div class="input_container">
-        <input type="text" id="ename" value='' name="ename" autocomplete="off" value="" aria-labelledby="placeholder-ename" placeholder="Nome dell'evento" />
+        <input type="text" id="ename" value='' class="i_fields" name="ename" autocomplete="off" value="" aria-labelledby="placeholder-ename" placeholder="Qual è il nome dell'evento?" />
         
-        <textarea id="edescription" name="edescription" value="" placeholder="Descrivi l'evento..." ></textarea>
-        
-        <div class="time_date">
-        <input type="time" id="etime" name="etime" value=""  />
-        <input type="date" id="edate" name="edate"value="" />
+        <textarea id="edescription" class="i_fields" name="edescription" value="" placeholder="Descrivi l'evento..." ></textarea>
+        <div class="time_date_box">
+        <input type="time" id="etime" class="i_fields" name="etime" value=""  />
+        <input type="date" id="edate" class="i_fields" name="edate"value="" />
       </div>
         
-      <input type="number" step="any" id="eprice" name="eprice" placeholder="Prezzo evento" />
-      <input type="text" id="mapInput" name="elocation" autocomplete="off" value="" aria-labelledby="placeholder-elocation" placeholder="Inserisci il luogo dell'evento" />
+      <input type="number" step="any" id="eprice" class="i_fields" name="eprice" placeholder="Prezzo evento" />
+      <input type="text" id="mapInput" class="i_fields" name="elocation" autocomplete="off" value="" aria-labelledby="placeholder-elocation" placeholder="Inserisci il luogo dell'evento" />
       </div>
-      <input type="button" id="enter" value="Formatta il testo" />
-      <input type="reset" id="res"/>
+      <input type="button" id="enter" class="btns i_fields" value="Formatta il testo" />
+      <input type="reset" id="res" class="btns i_fields"/>
     </form>
 
     <code id="code_block"></code>
