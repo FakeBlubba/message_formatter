@@ -40,7 +40,7 @@ function hideInputs() {
 }
 
 //  Mostra selettivamente i campi di inserimento 
-function getInputsShowed() {
+function showInputs() {
   switch (dropdown_value) {
     case 'vola':
       hideInputs();
@@ -50,7 +50,7 @@ function getInputsShowed() {
     document.getElementById('etime').style.display = 'block';
     document.getElementById('edate').style.display = 'block';
     document.getElementById('mapInput').style.display = 'block';
-    document.getElementById('res').style.display = 'none';
+    document.getElementById('res').style.display = 'block';
     document.getElementById('enter').style.display = 'block';
     
     break;
@@ -61,7 +61,7 @@ function getInputsShowed() {
       document.getElementById('etime').style.display = 'block';
       document.getElementById('edate').style.display = 'block';
       document.getElementById('mapInput').style.display = 'block';
-      document.getElementById('res').style.display = 'none';
+      document.getElementById('res').style.display = 'block';
       document.getElementById('enter').style.display = 'block';
       break;
 
@@ -74,7 +74,7 @@ function getInputsShowed() {
         document.getElementById('edate').style.display = 'block';
         document.getElementById('mapInput').style.display = 'block';
         document.getElementById('eprice').style.display = 'block';
-        document.getElementById('res').style.display = 'none';
+        document.getElementById('res').style.display = 'block';
         document.getElementById('enter').style.display = 'block';
         break;
 
@@ -87,7 +87,7 @@ function getInputsShowed() {
           document.getElementById('edate').style.display = 'block';
           document.getElementById('mapInput').style.display = 'block';
           document.getElementById('eprice').style.display = 'block';
-          document.getElementById('res').style.display = 'none';
+          document.getElementById('res').style.display = 'block';
           document.getElementById('enter').style.display = 'block';
           break;
 
@@ -99,7 +99,7 @@ function getInputsShowed() {
             document.getElementById('edate').style.display = 'block';
             document.getElementById('mapInput').style.display = 'block';
             document.getElementById('eprice').style.display = 'block';
-            document.getElementById('res').style.display = 'none';
+            document.getElementById('res').style.display = 'block';
             document.getElementById('enter').style.display = 'block';
             break;
         
@@ -130,7 +130,21 @@ function writeCode() {
 
     /*  Gestione dell'errore */
     edescription ? description_text = edescription + ".<br /> <br />": description_text = ''
-    etime ? time_and_date_text = "🕒 Alle *" + etime + "* del *" + edate + ".*<br />": time_and_date_text = ''
+    etime ? time_text = "🕒 Alle *" + etime + "*" : time_text = ''
+    edate ? date_text = dateToDayName(edate) + " " + getDateDayNumber(edate) + " " + dateToMonthName(edate) : date_text = ''
+    
+     let time_and_date_text = "";
+
+
+    if(time_text && time_text.length > 0 && date_text && date_text.length > 0) {
+      time_and_date_text = time_text + " di *" + date_text + "*.<br />";
+    } else if(time_text && time_text.length > 0) {
+      time_and_date_text = time_text + ".<br />";
+    } else {
+      time_and_date_text = "🕒 In data *" + date_text + ".*<br />";
+    }
+    
+
     eaddress ? address_text = "📍 *" + eaddress + ".*<br />": address_text = ''
     eprice ? price_text = "💸 *€" + eprice + "*<br />" : price_text = ''
 
@@ -174,13 +188,35 @@ function getCode() {
   return document.getElementById('code_block').textContent;
 }
 
+/* Restituisce il nome del giorno in base alla data */
+function dateToDayName(dateToChange) {
+  var days = ['Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato'];
+  var date = new Date(dateToChange);
+  return days[date.getDay()];
+}
+
+function dateToMonthName(dateToChange) {
+  var months = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
+  var date = new Date(dateToChange);
+  return months[date.getMonth()];
+}
+
+
+function getDateDayNumber(dateToChange) {
+  var date = new Date(dateToChange);
+  const dayNumber = date.getDate();
+  return dayNumber;
+}
+
+
+
 //  Listeners
 
 //  Listener del dropdown menu che restituisce il valore selezionato
 setInterval(function () {
   document.querySelectorAll('.dropdown-menu li').forEach(function(element) {
   element.addEventListener('click', function() {
-  getInputsShowed();
+  showInputs();
   let parent = this.closest('.dropdown');
   let input = parent.querySelector('input');
   dropdown_value = input.value
@@ -213,3 +249,5 @@ $('.dropdown .dropdown-menu li').click(function() {
   $(this).parents('.dropdown').find('span').text($(this).text());
   $(this).parents('.dropdown').find('input').attr('value', $(this).attr('id'));
 });
+
+
