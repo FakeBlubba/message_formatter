@@ -3,12 +3,12 @@
 
 @font-face {
   font-family: 'Ancient-Tulip';
-  src: url('fonts/Ancient-Tulip.ttf') format('truetype');
+  src: url('../fonts/Ancient-Tulip.ttf') format('truetype');
 } 
 
 @font-face {
   font-family: "OffenbacherSchwabacherCAT";
-  src: url("fonts/OfenbacherSchwabCAT.ttf") format('truetype');
+  src: url("../fonts/OfenbacherSchwabCAT.ttf") format('truetype');
 }
 
 * {
