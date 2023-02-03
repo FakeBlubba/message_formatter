@@ -147,8 +147,7 @@ async function displayVolaEvent(codeBlock, values) {
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `
     🎺 *RIUNIONE DI V.O.L.A.* 🎺 ${breakLine}
-
-    ${descriptionText}${breakLine}
+    ${descriptionText}${breakLine}${breakLine}
     ${timeAndDateText}${breakLine}
     ${addressText}
   `;
@@ -165,7 +164,7 @@ async function displayCornoEvent(codeBlock, values) {
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `
     🐂 *RIUNIONE DEL CORNUS* 🐂${breakLine}
-    ${descriptionText}${breakLine}
+    ${descriptionText}${breakLine}${breakLine}
     ${timeAndDateText}${breakLine}
     ${addressText}
   `;
@@ -184,7 +183,7 @@ async function displayDinnerEvent(codeBlock, values) {
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `
     🍽️ *CENA ${values.ename}* 🍽️${breakLine}
-    ${descriptionText}${breakLine}
+    ${descriptionText}${breakLine}${breakLine}
     ${timeAndDateText}${breakLine}
     ${addressText}${breakLine}
     ${priceText}
@@ -202,7 +201,7 @@ async function displayRegularEvent(codeBlock, values) {
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `
   📅 *${values.ename}* 📅${breakLine}
-  ${descriptionText} ${breakLine}
+  ${descriptionText} ${breakLine}${breakLine}
   ${timeAndDateText} ${breakLine}
   ${addressText}
   `;
@@ -218,7 +217,7 @@ async function displayTripEvent(codeBlock, values) {
 
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `🛫 *ESTERO: ${values.ename}* 🛫${breakLine}
-  ${descriptionText} ${breakLine}
+  ${descriptionText} ${breakLine}${breakLine}
   ${timeAndDateText} ${breakLine}
   ${addressText}
   ` ;
