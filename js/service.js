@@ -142,7 +142,7 @@ async function displayVolaEvent(codeBlock, values) {
   const timeAndDateText = buildTimeAndDateText(values);
   const addressText = await buildAddressText(values.mapInput);
   
-  breakLine = breakLineFormatter(isAndroidBrowser);
+  breakLine = breakLineFormatter(isAndroidBrowser());
 
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `
@@ -155,12 +155,12 @@ async function displayVolaEvent(codeBlock, values) {
 }
 
 // Crea il codice per gli eventi di Corno
-async function displayCornoEvent(codeBlock, values, isAndroid = False) {
+async function displayCornoEvent(codeBlock, values) {
   const descriptionText = buildDescriptionText(values.edescription);
   const timeAndDateText = buildTimeAndDateText(values);
   const addressText = await buildAddressText(values.mapInput);
 
-  breakLine = breakLineFormatter(isAndroid);
+  breakLine = breakLineFormatter(isAndroidBrowser());
 
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `
@@ -172,7 +172,7 @@ async function displayCornoEvent(codeBlock, values, isAndroid = False) {
 }
 
 // Crea il codice per le cene
-async function displayDinnerEvent(codeBlock, values, isAndroid = False) {
+async function displayDinnerEvent(codeBlock, values) {
   const descriptionText = buildDescriptionText(values.edescription);
   const timeAndDateText = buildTimeAndDateText(values);
   const addressText = await buildAddressText(values.mapInput);
@@ -192,12 +192,12 @@ async function displayDinnerEvent(codeBlock, values, isAndroid = False) {
 }
 
 // Crea il codice per gli eventi generici
-async function displayRegularEvent(codeBlock, values, isAndroid = False) {
+async function displayRegularEvent(codeBlock, values) {
   const descriptionText = buildDescriptionText(values.edescription);
   const timeAndDateText = buildTimeAndDateText(values);
   const addressText = await buildAddressText(values.mapInput);
 
-  breakLine = breakLineFormatter(isAndroid);
+  breakLine = breakLineFormatter(isAndroidBrowser());
 
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `
@@ -209,12 +209,12 @@ async function displayRegularEvent(codeBlock, values, isAndroid = False) {
   }
   
 // Crea il codice per gli esteri
-async function displayTripEvent(codeBlock, values, isAndroid = False) {
+async function displayTripEvent(codeBlock, values) {
   const descriptionText = buildDescriptionText(values.edescription);
   const timeAndDateText = buildTimeAndDateText(values);
   const addressText = await buildAddressText(values.mapInput);
   
-  breakLine = breakLineFormatter(isAndroid);
+  breakLine = breakLineFormatter(isAndroidBrowser());
 
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `🛫 *ESTERO: ${values.ename}* 🛫${breakLine}
