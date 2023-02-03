@@ -146,11 +146,7 @@ async function displayVolaEvent(codeBlock, values) {
 
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `
-    🎺 *RIUNIONE DI V.O.L.A.* 🎺 ${breakLine}
-    ${descriptionText}${breakLine}${breakLine}
-    ${timeAndDateText}${breakLine}
-    ${addressText}
-  `;
+    🎺 *RIUNIONE DI V.O.L.A.* 🎺 ${breakLine}${descriptionText}${breakLine}${breakLine}${timeAndDateText}${breakLine}${addressText}`;
 }
 
 // Crea il codice per gli eventi di Corno
@@ -163,11 +159,7 @@ async function displayCornoEvent(codeBlock, values) {
 
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `
-    🐂 *RIUNIONE DEL CORNUS* 🐂${breakLine}
-    ${descriptionText}${breakLine}${breakLine}
-    ${timeAndDateText}${breakLine}
-    ${addressText}
-  `;
+    🐂 *RIUNIONE DEL CORNUS* 🐂${breakLine}${descriptionText}${breakLine}${breakLine}${timeAndDateText}${breakLine}${addressText}`;
 }
 
 // Crea il codice per le cene
@@ -182,12 +174,7 @@ async function displayDinnerEvent(codeBlock, values) {
 
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `
-    🍽️ *CENA ${values.ename}* 🍽️${breakLine}
-    ${descriptionText}${breakLine}${breakLine}
-    ${timeAndDateText}${breakLine}
-    ${addressText}${breakLine}
-    ${priceText}
-  `;
+    🍽️ *CENA ${values.ename}* 🍽️${breakLine}${descriptionText}${breakLine}${breakLine}${timeAndDateText}${breakLine}${addressText}${breakLine}${priceText}`;
 }
 
 // Crea il codice per gli eventi generici
@@ -200,11 +187,7 @@ async function displayRegularEvent(codeBlock, values) {
 
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `
-  📅 *${values.ename}* 📅${breakLine}
-  ${descriptionText} ${breakLine}${breakLine}
-  ${timeAndDateText} ${breakLine}
-  ${addressText}
-  `;
+  📅 *${values.ename}* 📅${breakLine}${descriptionText} ${breakLine}${breakLine}${timeAndDateText} ${breakLine}${addressText}`;
   }
   
 // Crea il codice per gli esteri
@@ -216,11 +199,7 @@ async function displayTripEvent(codeBlock, values) {
   breakLine = breakLineFormatter(isAndroidBrowser());
 
   codeBlock.style.display = "block";
-  codeBlock.innerHTML = `🛫 *ESTERO: ${values.ename}* 🛫${breakLine}
-  ${descriptionText} ${breakLine}${breakLine}
-  ${timeAndDateText} ${breakLine}
-  ${addressText}
-  ` ;
+  codeBlock.innerHTML = `🛫 *ESTERO: ${values.ename}* 🛫${breakLine}${descriptionText}${breakLine}${breakLine}${timeAndDateText}${breakLine}${addressText}`;
   }
 
 //  FUNZIONI DI SUPPORTO PER QUELLE DI DISPLAY
