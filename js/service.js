@@ -50,7 +50,7 @@ function showInputs() {
   let commonExclusions = [ids[0], ids[5], ids[8]];
 
   // Crea un array di casi che hanno le stesse esclusioni
-  let casesWithCommonExclusions = ['vola', 'corno'];
+  let casesWithCommonExclusions = ['vola', 'corno', 'popolo', 'questua', 'letti'];
   // Crea un array di casi con solo un'esclusione
   let casesWithOnlyCodeExclusion = ['cena', 'estero'];
 
@@ -100,6 +100,14 @@ async function writeCode() {
         await displayVolaEvent(codeBlock, values);
         break;
 
+      case "popolo":
+        await displayRiunionePopoloEvent(codeBlock, values);
+        break;
+
+      case "questua":
+        await displayQuestuaEvent(codeBlock, values);
+        break;
+
       case "corno":
         await displayCornoEvent(codeBlock, values);
         break;
@@ -114,6 +122,10 @@ async function writeCode() {
 
       case "estero":
         await displayTripEvent(codeBlock, values);
+        break;
+
+      case "letti":
+        await displayRichiestaPostiLetto(codeBlock, values);
         break;
         
       default:
@@ -147,6 +159,30 @@ async function displayVolaEvent(codeBlock, values) {
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `
     🎺 *RIUNIONE DI V.O.L.A.* 🎺 ${breakLine}${descriptionText}${breakLine}${breakLine}${timeAndDateText}${breakLine}${addressText}`;
+}
+
+async function displayRiunionePopoloEvent(codeBlock, values) {
+  const descriptionText = buildDescriptionText(values.edescription);
+  const timeAndDateText = buildTimeAndDateText(values);
+  const addressText = await buildAddressText(values.mapInput);
+  
+  breakLine = breakLineFormatter(isAndroidBrowser());
+
+  codeBlock.style.display = "block";
+  codeBlock.innerHTML = `
+    🐑 *RIUNIONE POPOLO* 🐑 ${breakLine}${descriptionText}${breakLine}${breakLine}${timeAndDateText}${breakLine}${addressText}`;
+}
+
+async function displayQuestuaEvent(codeBlock, values) {
+  const descriptionText = buildDescriptionText(values.edescription);
+  const timeAndDateText = buildTimeAndDateText(values);
+  const addressText = await buildAddressText(values.mapInput);
+  
+  breakLine = breakLineFormatter(isAndroidBrowser());
+
+  codeBlock.style.display = "block";
+  codeBlock.innerHTML = `
+  💰 *QUESTUA* 💰 ${breakLine}${descriptionText}${breakLine}${breakLine}${timeAndDateText}${breakLine}${addressText}`;
 }
 
 // Crea il codice per gli eventi di Corno
@@ -201,6 +237,18 @@ async function displayTripEvent(codeBlock, values) {
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `🛫 *ESTERO: ${values.ename}* 🛫${breakLine}${descriptionText}${breakLine}${breakLine}${timeAndDateText}${breakLine}${addressText}`;
   }
+
+async function displayRichiestaPostiLetto(codeBlock, values) {
+  const descriptionText = buildDescriptionText(values.edescription);
+  const timeAndDateText = buildTimeAndDateText(values);
+  const addressText = await buildAddressText(values.mapInput);
+  
+  breakLine = breakLineFormatter(isAndroidBrowser());
+
+  codeBlock.style.display = "block";
+  codeBlock.innerHTML = `🛌 *RICHIESTA POSTI LETTO* 🛌${breakLine}${descriptionText}${breakLine}${breakLine}${timeAndDateText}${breakLine}${addressText}`;
+
+}
 
 //  FUNZIONI DI SUPPORTO PER QUELLE DI DISPLAY
 //  Restituisce tutti i valori degli id
