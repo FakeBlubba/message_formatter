@@ -123,6 +123,18 @@ async function writeCode() {
   });
 }
 
+function isAndroidBrowser() {
+  return navigator.userAgent.toLowerCase().indexOf("android") > -1;
+}
+
+function breakLineFormatter(isAndroid) {
+  if (isAndroid == false) {
+    return "<br />";
+  } else {
+    return `\n`;
+  }
+}
+
 // FUNZIONI PER LA CREAZIONE DI CODICE NEI VARI CASES DI writeCode()
 // Crea il codice per gli eventi di vola
 async function displayVolaEvent(codeBlock, values) {
@@ -130,74 +142,84 @@ async function displayVolaEvent(codeBlock, values) {
   const timeAndDateText = buildTimeAndDateText(values);
   const addressText = await buildAddressText(values.mapInput);
   
+  breakLine = breakLineFormatter(isAndroidBrowser);
+
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `
-    🎺 *RIUNIONE DI V.O.L.A.* 🎺
+    🎺 *RIUNIONE DI V.O.L.A.* 🎺 ${breakLine}
 
-    ${descriptionText}
-    ${timeAndDateText}
+    ${descriptionText}${breakLine}
+    ${timeAndDateText}${breakLine}
     ${addressText}
   `;
 }
 
 // Crea il codice per gli eventi di Corno
-async function displayCornoEvent(codeBlock, values) {
+async function displayCornoEvent(codeBlock, values, isAndroid = False) {
   const descriptionText = buildDescriptionText(values.edescription);
   const timeAndDateText = buildTimeAndDateText(values);
   const addressText = await buildAddressText(values.mapInput);
 
+  breakLine = breakLineFormatter(isAndroid);
+
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `
-    🐂 *RIUNIONE DEL CORNUS* 🐂
-    ${descriptionText}
-    ${timeAndDateText}
+    🐂 *RIUNIONE DEL CORNUS* 🐂${breakLine}
+    ${descriptionText}${breakLine}
+    ${timeAndDateText}${breakLine}
     ${addressText}
   `;
 }
 
 // Crea il codice per le cene
-async function displayDinnerEvent(codeBlock, values) {
+async function displayDinnerEvent(codeBlock, values, isAndroid = False) {
   const descriptionText = buildDescriptionText(values.edescription);
   const timeAndDateText = buildTimeAndDateText(values);
   const addressText = await buildAddressText(values.mapInput);
   const priceText = buildPriceText(values.mapInput);
 
+  breakLine = breakLineFormatter(isAndroid);
+
+
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `
-    🍽️ *CENA ${values.ename}* 🍽️
-    ${descriptionText}
-    ${timeAndDateText}
-    ${addressText}
+    🍽️ *CENA ${values.ename}* 🍽️${breakLine}
+    ${descriptionText}${breakLine}
+    ${timeAndDateText}${breakLine}
+    ${addressText}${breakLine}
     ${priceText}
   `;
 }
 
 // Crea il codice per gli eventi generici
-async function displayRegularEvent(codeBlock, values) {
+async function displayRegularEvent(codeBlock, values, isAndroid = False) {
   const descriptionText = buildDescriptionText(values.edescription);
   const timeAndDateText = buildTimeAndDateText(values);
   const addressText = await buildAddressText(values.mapInput);
 
-  
+  breakLine = breakLineFormatter(isAndroid);
+
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `
-  📅 *${values.ename}* 📅
-  ${descriptionText} 
-  ${timeAndDateText} 
+  📅 *${values.ename}* 📅${breakLine}
+  ${descriptionText} ${breakLine}
+  ${timeAndDateText} ${breakLine}
   ${addressText}
   `;
   }
   
 // Crea il codice per gli esteri
-async function displayTripEvent(codeBlock, values) {
+async function displayTripEvent(codeBlock, values, isAndroid = False) {
   const descriptionText = buildDescriptionText(values.edescription);
   const timeAndDateText = buildTimeAndDateText(values);
   const addressText = await buildAddressText(values.mapInput);
   
+  breakLine = breakLineFormatter(isAndroid);
+
   codeBlock.style.display = "block";
-  codeBlock.innerHTML = `🛫 *ESTERO: ${values.ename}* 🛫
-  ${descriptionText} 
-  ${timeAndDateText} 
+  codeBlock.innerHTML = `🛫 *ESTERO: ${values.ename}* 🛫${breakLine}
+  ${descriptionText} ${breakLine}
+  ${timeAndDateText} ${breakLine}
   ${addressText}
   ` ;
   }
