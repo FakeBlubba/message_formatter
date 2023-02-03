@@ -237,7 +237,7 @@ function buildTimeAndDateText(values) {
 // Restituisce la stringa con l'indirizzo formattato
 async function buildAddressText(address) {
   const link = await getLink(address);
-  link != '' ? text = `📍 *${address}* (${link})` : text = `📍 *${address}*`;
+  link != '' ? text = `📍 *${address}* (${link})` : text = ``;
   return text;
 
 }
