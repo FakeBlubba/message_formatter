@@ -293,7 +293,7 @@ code {
 @media only screen and (max-width: 480px) {
 
   .exInfo {
-    margin: .8em 1em 0 1.5em;
+    margin: .8em 1em 0 1em;
   }
 
   .exInfo > p, p {
