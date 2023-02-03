@@ -237,8 +237,8 @@ function buildTimeAndDateText(values) {
 // Restituisce la stringa con l'indirizzo formattato
 async function buildAddressText(address) {
   const link = await getLink(address);
-  console.log(link)
-  return `📍 *${address}* (${link})`;
+  link != '' ? text = `📍 *${address}* (${link})` : text = `📍 *${address}*`;
+  return text;
 
 }
 
@@ -257,18 +257,25 @@ function getCode() {
 
 //  Dato un indirizzo ne restituisce le coordinate
 async function getCoordinates(location) {
+  if(location != '') {
   const locationEncoded = encodeURIComponent(location);
   const response = await fetch(`https://nominatim.openstreetmap.org/search?street=${locationEncoded}&format=json`);
   const data = await response.json();
   const lat = data[0].lat;
   const lon = data[0].lon;
   return [lat,lon];
+  } else {
+    return null;
+  }
 
 }
 
 //  Date le coordinate in entrata viene restituito il link Google avente quei dati
 function generateLinkFromCoordinates(coordinates) {
-  return `https://www.google.com/maps/place/${coordinates[0]},${coordinates[1]}`;
+  if (coordinates != null) {
+    return `https://www.google.com/maps/place/${coordinates[0]},${coordinates[1]}`;
+  }
+  return ''
 }
 
 async function getLink(location) {
