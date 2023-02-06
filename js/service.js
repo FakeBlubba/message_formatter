@@ -1,6 +1,7 @@
 //  Variabili globali
-var dropdown_value = '';
-var ids = ['ename', 'edescription', 'etime', 'edate', 'mapInput', 'eprice', 'enter', 'res', 'code_block'];
+let dropdown_value = '';
+let effettiValue = ''
+let ids = ['ename', 'edescription', 'etime', 'edate', 'mapInput', 'eprice', 'enter', 'res', 'code_block', 'progress-container'];
 
 
 // Modifica il titolo e la descrizione della pagina
@@ -50,7 +51,7 @@ function showInputs() {
   let commonExclusions = [ids[0], ids[5], ids[8]];
 
   // Crea un array di casi che hanno le stesse esclusioni
-  let casesWithCommonExclusions = ['vola', 'corno', 'popolo', 'questua', 'letti'];
+  let casesWithCommonExclusions = ['vola', 'corno', 'popolo', 'questua'];
   // Crea un array di casi con solo un'esclusione
   let casesWithOnlyCodeExclusion = ['cena', 'estero'];
 
@@ -72,7 +73,10 @@ function showInputs() {
 
   // Verifica se il valore di dropdown_value corrisponde e 'evento' ed esclude price
   if (dropdown_value === 'evento') {
-    refreshSelectedInputFields(ids, [ids[5]]);
+    refreshSelectedInputFields(ids, [ids[5], ids[9]]);
+    return;
+  } else if(dropdown_value === 'letti') {
+    refreshSelectedInputFields(ids, [ids[0], ids[2], ids[4], ids[5], ids[9]]);
     return;
   }
 
@@ -80,18 +84,20 @@ function showInputs() {
   hideAllInputFields();
 }
 
+
 //  Genera il codice whatsapp, in base ai valori inseriti dall'utente
 async function writeCode() {
   
   /*  Selezionamento oggetti per fare output  */
   const button = document.getElementById(ids[6]);
-  const codeBlock = document.getElementById(ids[8])
+  const codeBlock = document.getElementById(ids[8]);
 
   /*  Listener che si attiva al click sul pulsante a fine form  */
   button.addEventListener("click", async function(){ 
 
     /*  Valori dei vari input dell'utente  */
     const values = getAllValues(ids)
+
     const eventType = dropdown_value;
     
     /*  Gestione e composizione dei campi di inserimento dell'utente */
@@ -152,37 +158,40 @@ function breakLineFormatter(isAndroid) {
 async function displayVolaEvent(codeBlock, values) {
   const descriptionText = buildDescriptionText(values.edescription);
   const timeAndDateText = buildTimeAndDateText(values);
+  const clothesText = buildClothesText(effettiValue);
   const addressText = await buildAddressText(values.mapInput);
   
   breakLine = breakLineFormatter(isAndroidBrowser());
 
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `
-    🎺 *RIUNIONE DI V.O.L.A.* 🎺 ${breakLine}${descriptionText}${breakLine}${breakLine}${timeAndDateText}${breakLine}${addressText}`;
+    🎺 *RIUNIONE DI V.O.L.A.* 🎺 ${breakLine}${descriptionText}${breakLine}${breakLine}${timeAndDateText}${breakLine}${addressText}${breakLine}${clothesText}`;
 }
 
 async function displayRiunionePopoloEvent(codeBlock, values) {
   const descriptionText = buildDescriptionText(values.edescription);
   const timeAndDateText = buildTimeAndDateText(values);
   const addressText = await buildAddressText(values.mapInput);
-  
+  const clothesText = buildClothesText(effettiValue);
+
   breakLine = breakLineFormatter(isAndroidBrowser());
 
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `
-    🐑 *RIUNIONE POPOLO* 🐑 ${breakLine}${descriptionText}${breakLine}${breakLine}${timeAndDateText}${breakLine}${addressText}`;
+    🐑 *RIUNIONE POPOLO* 🐑 ${breakLine}${descriptionText}${breakLine}${breakLine}${timeAndDateText}${breakLine}${addressText}${breakLine}${clothesText}`;
 }
 
 async function displayQuestuaEvent(codeBlock, values) {
   const descriptionText = buildDescriptionText(values.edescription);
   const timeAndDateText = buildTimeAndDateText(values);
   const addressText = await buildAddressText(values.mapInput);
-  
+  const clothesText = buildClothesText(effettiValue);
+
   breakLine = breakLineFormatter(isAndroidBrowser());
 
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `
-  💰 *QUESTUA* 💰 ${breakLine}${descriptionText}${breakLine}${breakLine}${timeAndDateText}${breakLine}${addressText}`;
+  💰 *QUESTUA* 💰 ${breakLine}${descriptionText}${breakLine}${breakLine}${timeAndDateText}${breakLine}${addressText}${breakLine}${clothesText}`;
 }
 
 // Crea il codice per gli eventi di Corno
@@ -190,12 +199,13 @@ async function displayCornoEvent(codeBlock, values) {
   const descriptionText = buildDescriptionText(values.edescription);
   const timeAndDateText = buildTimeAndDateText(values);
   const addressText = await buildAddressText(values.mapInput);
+  const clothesText = buildClothesText(effettiValue);
 
   breakLine = breakLineFormatter(isAndroidBrowser());
 
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `
-    🐂 *RIUNIONE DEL CORNUS* 🐂${breakLine}${descriptionText}${breakLine}${breakLine}${timeAndDateText}${breakLine}${addressText}`;
+    🐂 *RIUNIONE DEL CORNUS* 🐂${breakLine}${descriptionText}${breakLine}${breakLine}${timeAndDateText}${breakLine}${addressText}${breakLine}${clothesText}`;
 }
 
 // Crea il codice per le cene
@@ -204,13 +214,14 @@ async function displayDinnerEvent(codeBlock, values) {
   const timeAndDateText = buildTimeAndDateText(values);
   const addressText = await buildAddressText(values.mapInput);
   const priceText = buildPriceText(values.mapInput);
+  const clothesText = buildClothesText(effettiValue);
 
   breakLine = breakLineFormatter(isAndroid);
 
 
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `
-    🍽️ *CENA ${values.ename}* 🍽️${breakLine}${descriptionText}${breakLine}${breakLine}${timeAndDateText}${breakLine}${addressText}${breakLine}${priceText}`;
+    🍽️ *CENA ${values.ename}* 🍽️${breakLine}${descriptionText}${breakLine}${breakLine}${timeAndDateText}${breakLine}${addressText}${breakLine}${priceText}${breakLine}${clothesText}`;
 }
 
 // Crea il codice per gli eventi generici
@@ -218,12 +229,13 @@ async function displayRegularEvent(codeBlock, values) {
   const descriptionText = buildDescriptionText(values.edescription);
   const timeAndDateText = buildTimeAndDateText(values);
   const addressText = await buildAddressText(values.mapInput);
+  const clothesText = buildClothesText(effettiValue);
 
   breakLine = breakLineFormatter(isAndroidBrowser());
 
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `
-  📅 *${values.ename}* 📅${breakLine}${descriptionText} ${breakLine}${breakLine}${timeAndDateText} ${breakLine}${addressText}`;
+  📅 *${values.ename}* 📅${breakLine}${descriptionText} ${breakLine}${breakLine}${timeAndDateText} ${breakLine}${addressText}${breakLine}${clothesText}`;
   }
   
 // Crea il codice per gli esteri
@@ -231,19 +243,19 @@ async function displayTripEvent(codeBlock, values) {
   const descriptionText = buildDescriptionText(values.edescription);
   const timeAndDateText = buildTimeAndDateText(values);
   const addressText = await buildAddressText(values.mapInput);
-  
+  const clothesText = buildClothesText(effettiValue);
+
   breakLine = breakLineFormatter(isAndroidBrowser());
 
   codeBlock.style.display = "block";
-  codeBlock.innerHTML = `🛫 *ESTERO: ${values.ename}* 🛫${breakLine}${descriptionText}${breakLine}${breakLine}${timeAndDateText}${breakLine}${addressText}`;
+  codeBlock.innerHTML = `🛫 *ESTERO: ${values.ename}* 🛫${breakLine}${descriptionText}${breakLine}${breakLine}${timeAndDateText}${breakLine}${addressText}${breakLine}${clothesText}`;
   }
 
 async function displayRichiestaPostiLetto(codeBlock, values) {
   const descriptionText = buildDescriptionText(values.edescription);
-  const timeAndDateText = buildTimeAndDateText(values);
-  const addressText = await buildAddressText(values.mapInput);
-  
+  const timeAndDateText = buildTimeAndDateText(values);  
   breakLine = breakLineFormatter(isAndroidBrowser());
+  const clothesText = buildClothesText(effettiValue);
 
   codeBlock.style.display = "block";
   codeBlock.innerHTML = `🛌 *RICHIESTA POSTI LETTO* 🛌${breakLine}${descriptionText}${breakLine}${breakLine}${timeAndDateText}${breakLine}${addressText}`;
@@ -262,21 +274,28 @@ function getAllValues(idStrings) {
   
 //  Restituisce la stringa con la descrizione
 function buildDescriptionText(description) {
-  return description ? `${description}.<br /> <br />` : '';
+  return description ? `${description}.` : '';
 }
 
+function buildDateText(date) {
+  return date ? `${dateToDayName(date)} ${getDateDayNumber(date)} ${dateToMonthName(date)}` : '';
+}
+
+function buildTimeText(time) {
+  return time ? `🕒 Alle *${time}*` : '';
+}
 //  Restituisce, compone e formatta la stringa con la data e il tempo
 function buildTimeAndDateText(values) {
-  let timeText = values.etime ? `🕒 Alle *${values.etime}*` : '';
-  let dateText = values.edate ? `${dateToDayName(values.edate)} ${getDateDayNumber(values.edate)} ${dateToMonthName(values.edate)}` : '';
+  let timeText = buildTimeText(values.etime);
+  let dateText = buildDateText(values.edate);
   let timeAndDateText = '';
 
   if (timeText && dateText) {
-    timeAndDateText = `${timeText} di *${dateText}*.<br />`;
+    timeAndDateText = `${timeText} di *${dateText}*.`;
   } else if (timeText) {
-    timeAndDateText = `${timeText}.<br />`;
+    timeAndDateText = `${timeText}.`;
   } else if (dateText) {
-    timeAndDateText = `🕒 In data *${dateText}.*<br />`;
+    timeAndDateText = `🕒 In data *${dateText}.*`;
   }
 
   return timeAndDateText;
@@ -285,14 +304,30 @@ function buildTimeAndDateText(values) {
 // Restituisce la stringa con l'indirizzo formattato
 async function buildAddressText(address) {
   const link = await getLink(address);
-  link != '' ? text = `📍 *${address}* (${link})` : text = ``;
+  link != '' ? text = `📍 *${address}* (${link}).` : text = ``;
   return text;
 
 }
 
 //  Restituisce la stringa con il testo formattata
 function buildPriceText(price) {
-  return price ? `💸 *€${price}*<br />` : '';
+  return price ? `💸 *€${price}*.` : '';
+}
+
+function buildClothesText(clothes) {
+  switch(clothes) {
+    case 'Effetti al completo':
+      return `👕 *EFFETTI AL COMPLETO.*`;
+
+    case 'Placca e Feluca':
+      return `📿 *PLACCA E FELUCA.*`;
+    
+    case 'Niente Effetti':
+    return `🩲 *NIENTE EFFETTI.*`;
+
+    default:
+      return '';
+  }
 }
 
 //  Restituisce il codice composto e incollato all'interno del blocco code 
@@ -358,15 +393,16 @@ function getDateDayNumber(dateToChange) {
 //  Listener del dropdown menu che restituisce il valore selezionato
 setInterval(function () {
   // Listener del dropdown menu che restituisce il valore selezionato
-document.querySelectorAll('.dropdown-menu li').forEach(function(element) {
-  element.addEventListener('click', function() {
-    let parent = this.closest('.dropdown');
-    let input = parent.querySelector('input');
-    dropdown_value = input.value;
-    showInputs();
+  document.querySelectorAll('.dropdown-menu li').forEach(function(element) {
+    element.addEventListener('click', function() {
+      let parent = this.closest('.dropdown');
+      let input = parent.querySelector('input');
+      dropdown_value = input.value;
+      showInputs();
+      });
     });
-  });
-}, 300);
+  }, 300);
+
 
 //  Listener  che copia il codice negli appunti al click sul codice
 document.getElementById('code_block').addEventListener('click', function() {
@@ -393,5 +429,48 @@ $('.dropdown .dropdown-menu li').click(function() {
   $(this).parents('.dropdown').find('span').text($(this).text());
   $(this).parents('.dropdown').find('input').attr('value', $(this).attr('id'));
 });
+
+document.getElementById('progress-container').addEventListener('click', function(event) {
+  const progressContainer = document.getElementById("progress-container");
+  const progressBar = document.getElementById("progress-bar");
+  const output = document.getElementById("output");
+
+  let currentProgress = 0;
+  const progressStep = 50;
+  
+  const clickPosition = event.pageX -  progressContainer.offsetLeft;
+  const progressWidth = progressContainer.offsetWidth;
+  currentProgress = Math.round(clickPosition / progressWidth * 100 / progressStep) * progressStep;
+
+
+  if (currentProgress == 100) {
+    currentProgress = 90.5;
+  } else if (currentProgress >= 0 & currentProgress <= 25) {
+    currentProgress = 2.5;
+  } else {
+    currentProgress = 46.5
+  }
+
+  output.style.visibility = "visible";
+  output.style.left = currentProgress + "%";
+  effettiValue = updateOutput(currentProgress);
+});
+
+
+function updateOutput(currentProgress) {
+  const selector = document.getElementById('output');
+  let output_message = selector.children[1];
+  let message;
+  if (currentProgress >= 0 && currentProgress < 25) {
+    message = "Niente Effetti";
+  } else if (currentProgress >= 25 && currentProgress < 75) {
+    message = "Placca e Feluca";
+  } else if (currentProgress >=75 && currentProgress <= 100){
+    message = "Effetti al completo";
+  }
+  output_message.innerHTML = `${message}`;
+  return message;
+}
+
 
 

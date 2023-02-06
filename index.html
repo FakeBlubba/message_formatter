@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="it-IT">
 <head>
   <title id="exTitle">Titolo Esercizio</title>
   <meta charset="UTF-8">
@@ -17,7 +17,7 @@
 <body>
   <div class="exInfo">
     <h1 id="exHTitle">Titolo</h1>
-    <img src="media/logo.png" />
+    <img src="media/logo.svg"  alt="logo del sito" title="Sacra Vola del Toson d'Oro  "/>
     <p id="exDesc">Descrizione Esercizio</p>
   </div>
 
@@ -26,13 +26,13 @@
 
     <form action="" method="">
 
-      <div class="dropdown">
+      <div id="event_type" class="dropdown">
         <div class="select">
           <span>Seleziona tipo di evento</span>
           <i class="fa fa-chevron-left"></i>
         </div>
         <input type="hidden" name="event_type">
-        <ul class="dropdown-menu">
+        <ul id="even_type_list" class="dropdown-menu">
           <li id="vola">🎺 Riunione Tosone</li>
           <li id="popolo">🐑 Riunione Popolo</li>
           <li id="corno">🐂 Riunione di Corno</li>
@@ -44,9 +44,6 @@
         </ul>
         
       </div>
-    
-
-
 
       <div class="input_container">
         <input type="text" id="ename" value='' class="i_fields" name="ename" autocomplete="off" value="" aria-labelledby="placeholder-ename" placeholder="Qual è il nome dell'evento?" />
@@ -55,29 +52,44 @@
         <div class="time_date_box">
         <input type="time" id="etime" class="i_fields" name="etime" value=""  />
         <input type="date" id="edate" class="i_fields" name="edate"value="" />
+
       </div>
         
+
+
       <input type="number" step="any" id="eprice" class="i_fields" name="eprice" placeholder="Prezzo evento" />
       <input type="text" id="mapInput" class="i_fields" name="elocation" autocomplete="off" value="" aria-labelledby="placeholder-elocation" placeholder="Indirizzo..." />
       
-      <!--
-      <input type="radio" id="effetti_al_completo" name="effetti" value="all">
-      <label for="effetti_al_completo">Effetti al completo</label><br>
-      <input type="radio" id="placca_feluca" name="effetti" value="placca_feluca">
-      <label for="placca_feluca">Placca e feluca</label><br>
-      <input type="radio" id="niente_effetti" name="effetti" value="niente_effetti">
-      <label for="niente_effetti">Niente effetti</label>-->
-    
-      <input type="button" id="enter" class="btns i_fields" value="Invia" />
-      <input type="reset" id="res" class="btns i_fields"/>
+      
+        
+      <div id="progress-container">
+        <div class="lines-container">
+          <div></div>
+          <div></div>
         </div>
+        <div class="slide-points-container">
+          <div id="output" class="slide-point"><img src="media/slider.svg" alt="Tosone" title="Indicatore progress bar a forma di Tosone" /><div class="slider-text">Scorri per selezionare</div></div>
+          <div class="markers">
+            <div class="slide-point"></div>
+            <div class="slide-point"></div>
+            <div class="slide-point"></div>
+          </div>
+        </div>
+      </div>
 
+      <div class="submit-container">
       <input type="button" id="enter" class="btns i_fields" value="Invia" />
       <input type="reset" id="res" class="btns i_fields"/>
-      </form>
-    <code id="code_block"></code>
+    </div>
   </div>
+</div>
+      
+    </div>
+  </form>
+  <code id="code_block"></code>
+</div>
 
+</div>
 
 
 

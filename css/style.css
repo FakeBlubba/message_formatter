@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap&family=space+mono&display=swap');
 
 
 @font-face {
@@ -57,14 +57,12 @@ p {
 
 form {
 font-family: "OffenbacherSchwabacherCAT", "Ancient-Tulip", sans-serif;
-}
+margin: 1.5em 0 0 0;
 
-form {
-  margin: 1.5em 0 0 0;
 }
 
 form > * {
-  margin: 0 0 1.5em 0;
+  margin: 0 0 -5em 0;
 }
 
 label {
@@ -105,7 +103,7 @@ input:active {
 }
 
 input:focus {
-  outline: #0E592A
+  outline: #0E592A;
 }
 
 .dropdown {
@@ -248,21 +246,123 @@ input:focus {
 
 
 code {
-  margin: 5%;
-  font-family: monospace;
+  margin: 0  auto;
+  font-family: "Space Mono", monospace, sans-serif;
+  font-size: 17px;
   border: 1px solid;
   border-radius: 2.5px;
   border-color: #888;
   padding: 10%;
-  background-color: black;
-  color: white;
-  display: block;
+  background-color: #1a1a1a;
+  color: #e2e2e2;
   height: fit-content;
-  width: 70%;
+  width: 25em;
   display: none;
-  cursor: pointer;
+  cursor: copy;
+  line-break: anywhere;
+
 }
 
+/*Loading-bar*/
+#progress-container {
+  margin: 6em 10% -8em 10%;
+  display: none;
+}
+
+.lines-container {
+  border: 0.2em dashed #f2c615;
+  position: relative;
+  top: -1em;
+  opacity: 90%;
+
+
+}
+
+.slide-points-container {
+  -webkit-transition: all 0.5s 0s ease-out;
+  -moz-transition: all 0.5s 0s ease-out;
+  -o-transition: all 0.5s 0s ease-out;
+  transition: all 0.5s 0s ease-out;
+  margin: -2.4em 0;
+
+}
+
+.slide-points-container div {
+  cursor:pointer;
+}
+
+.slider-text {
+  white-space:nowrap;
+  position: relative;
+  top: -140%;
+  left: -4em;
+  width: 11em;
+  height: 5%;
+  font-size: .9em;
+  text-align: center;
+  font-family: "Ancient-Tulip", Arial, Helvetica, sans-serif;
+  color: #185;
+  
+}
+
+.markers {
+  display: inline-flex;
+  justify-content: space-between; 
+  width: 100%;
+
+}
+
+
+.slide-point {
+  width: 4em;
+  height: 4em;
+  background-color: #185b32;
+  border: .25em solid #f2c615;
+  border-radius: 3em;
+  margin: -2.5em 0;
+  position: relative;
+  -webkit-transition: all 0.5s 0s ease-out;
+  -moz-transition: all 0.5s 0s ease-out;
+  -o-transition: all 0.5s 0s ease-out;
+  transition: all 0.5s 0s ease-out;
+}
+
+.slide-point:hover {
+  opacity: 100%;
+  -webkit-filter: drop-shadow(1px 1px 5px rgb(37, 37, 37));
+  filter: drop-shadow(1px 1px 5px rgb(37, 37, 37));
+}
+
+#output { 
+  border: none;
+  background-color: unset;
+  z-index: 1;
+  width: 2.5em;
+  visibility: hidden;
+  opacity: 100%;
+  -webkit-transition: all 0.5s 0s ease-out;
+  -moz-transition: all 0.5s 0s ease-out;
+  -o-transition: all 0.5s 0s ease-out;
+  transition: all 0.5s 0s ease-out;
+}
+
+
+
+#output > img {
+  width: 100%;
+  -webkit-filter: drop-shadow(1px 1px 1px rgb(37, 37, 37));
+  filter: drop-shadow(1px 1px 1px rgb(37, 37, 37));
+
+}
+
+#output > img:hover {
+  -webkit-filter: drop-shadow(2px 2px 2px rgb(37, 37, 37));
+  filter: drop-shadow(2px 2px 2px rgb(37, 37, 37));
+}
+
+.submit-container {
+  margin-top: 10em;
+}
 
 
 @media only screen and (max-width: 768px) {
@@ -281,10 +381,6 @@ code {
   .time_date_box > input {
     width: 90%;
     
-  }
-  code {
-    line-break: anywhere;
-
   }
 
 
