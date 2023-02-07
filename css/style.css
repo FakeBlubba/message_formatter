@@ -272,43 +272,15 @@ code {
 .lines-container {
   border: 0.2em dashed #f2c615;
   position: relative;
-  top: -1em;
   opacity: 90%;
 
-
-}
-
-.slide-points-container {
-  -webkit-transition: all 0.5s 0s ease-out;
-  -moz-transition: all 0.5s 0s ease-out;
-  -o-transition: all 0.5s 0s ease-out;
-  transition: all 0.5s 0s ease-out;
-  margin: -2.4em 0;
-
-}
-
-.slide-points-container div {
-  cursor:pointer;
-}
-
-.slider-text {
-  white-space:nowrap;
-  position: relative;
-  top: -140%;
-  left: -4em;
-  width: 11em;
-  height: 5%;
-  font-size: .9em;
-  text-align: center;
-  font-family: "Ancient-Tulip", Arial, Helvetica, sans-serif;
-  color: #185;
-  
 }
 
 .markers {
   display: inline-flex;
   justify-content: space-between; 
   width: 100%;
+  cursor: pointer;
 
 }
 
@@ -327,10 +299,63 @@ code {
   transition: all 0.5s 0s ease-out;
 }
 
+
+.slide-point > img {
+  display: inline-block;
+  transform: scaleX(-1);
+  margin: .7em;
+  width: 2.5em;
+  visibility: hidden;
+  -webkit-transition: all 0.5s 0s ease-out;
+  -moz-transition: all 0.5s 0s ease-out;
+  -o-transition: all 0.5s 0s ease-out;
+  transition: all 0.5s 0s ease-out;
+}
+
+.slide-point:hover > img {
+  visibility:visible;
+  opacity: 80%;
+}
+
+.slide-point::after {
+  text-transform: uppercase;
+  white-space:nowrap;
+  position: relative;
+  top: -160%;
+  left: -45%;
+  font-size: .9em;
+  text-align: center;
+  font-family: "Ancient-Tulip", Arial, Helvetica, sans-serif;
+  color: #185b32;
+  color: #aaaaaa
+}
+
+.slide-point:first-child::after {
+  content: "Niente Effetti";
+}
+
+.slide-point:nth-child(2)::after {
+  content: "Placca e Feluca";
+}
+
+.slide-point:last-child::after {
+  content: "Effetti al completo";
+}
+
+.slide-point::after:hover {
+  color: #185b32;
+}
+
 .slide-point:hover {
-  opacity: 100%;
-  -webkit-filter: drop-shadow(1px 1px 5px rgb(37, 37, 37));
-  filter: drop-shadow(1px 1px 5px rgb(37, 37, 37));
+  box-shadow: 0px 0px 5px 19px rgba(0,0,0,0.53) inset;
+  -webkit-box-shadow: 0px 0px 5px 19px rgba(0,0,0,0.53) inset;
+  -moz-box-shadow: 0px 0px 5px 19px rgba(0,0,0,0.53) inset;
+}
+
+.slide-point:hover > .slide-point::after {
+  box-shadow: none;
+  -webkit-box-shadow:none;
+  -moz-box-shadow: none;
 }
 
 #output { 
@@ -340,18 +365,16 @@ code {
   width: 2.5em;
   visibility: hidden;
   opacity: 100%;
-  -webkit-transition: all 0.5s 0s ease-out;
-  -moz-transition: all 0.5s 0s ease-out;
-  -o-transition: all 0.5s 0s ease-out;
-  transition: all 0.5s 0s ease-out;
+
 }
 
 
 
 #output > img {
   width: 100%;
-  -webkit-filter: drop-shadow(1px 1px 1px rgb(37, 37, 37));
-  filter: drop-shadow(1px 1px 1px rgb(37, 37, 37));
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+
 
 }
 
@@ -430,10 +453,15 @@ code {
   }
 
   code {
-    margin: 0 auto 10em auto;
+    margin: 10em auto 10em auto;
     padding: 10px;
     width: fit-content;
     line-break: anywhere;
+  }
+
+  .slide-point:nth-child(2)::after {
+    top: 5%;
+
   }
   
 

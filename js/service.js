@@ -1,6 +1,6 @@
 //  Variabili globali
 let dropdown_value = '';
-let effettiValue = ''
+let effettiValue = '';
 let ids = ['ename', 'edescription', 'etime', 'edate', 'mapInput', 'eprice', 'enter', 'res', 'code_block', 'progress-container'];
 
 
@@ -158,6 +158,7 @@ function breakLineFormatter(isAndroid) {
 async function displayVolaEvent(codeBlock, values) {
   const descriptionText = buildDescriptionText(values.edescription);
   const timeAndDateText = buildTimeAndDateText(values);
+  console.log(effettiValue)
   const clothesText = buildClothesText(effettiValue);
   const addressText = await buildAddressText(values.mapInput);
   
@@ -316,13 +317,13 @@ function buildPriceText(price) {
 
 function buildClothesText(clothes) {
   switch(clothes) {
-    case 'Effetti al completo':
+    case 'completo':
       return `👕 *EFFETTI AL COMPLETO.*`;
 
-    case 'Placca e Feluca':
+    case 'parziale':
       return `📿 *PLACCA E FELUCA.*`;
     
-    case 'Niente Effetti':
+    case 'niente':
     return `🩲 *NIENTE EFFETTI.*`;
 
     default:
@@ -430,7 +431,7 @@ $('.dropdown .dropdown-menu li').click(function() {
   $(this).parents('.dropdown').find('input').attr('value', $(this).attr('id'));
 });
 
-document.getElementById('progress-container').addEventListener('click', function(event) {
+/*document.getElementById('progress-container').addEventListener('click', function(event) {
   const progressContainer = document.getElementById("progress-container");
   const progressBar = document.getElementById("progress-bar");
   const output = document.getElementById("output");
@@ -472,5 +473,16 @@ function updateOutput(currentProgress) {
   return message;
 }
 
-
-
+*/
+document.querySelectorAll('.slide-point').forEach(slidePoint => {
+  slidePoint.addEventListener('click', event => {
+    let clickedSlidePoint = event.target;
+    let clickedImg = clickedSlidePoint.querySelector('img');
+    document.querySelectorAll('img').forEach(img => {
+      img.style.visibility = 'hidden';
+    });
+    clickedImg.style.visibility = 'visible';
+    effettiValue = clickedImg.id;
+    return effettiValue;
+  });
+});
