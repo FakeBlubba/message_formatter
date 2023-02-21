@@ -1,0 +1,19 @@
+{
+  "name": "pannello_tosone",
+  "version": "0.2.0",
+  "description": "Infrastruttura per la creazione del sito del pannello di gestione dei messaggi del tosone",
+  "main": "main.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "Federico Bianchetti",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "webpack": "^5.75.0"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "http": "^0.0.1-security"
+  }
+}
