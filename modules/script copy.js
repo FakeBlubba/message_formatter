@@ -1,4 +1,3 @@
-const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
 const dom1 = new JSDOM(`<!DOCTYPE html><html><body></body></html>`);

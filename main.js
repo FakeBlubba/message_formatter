@@ -1,5 +1,5 @@
 import { serverManager } from "./modules/serverData.js";
-import { fileInfo } from "./modules/filesData.js";
+//import { fileInfo } from "./modules/filesData.js";
 
 //  Creazione istanza di server
 const server = new serverManager('http', 'localhost', 3000);
