@@ -1,6 +1,7 @@
 //  Modulo contenente le classi inerenti al server
 import fs from 'fs';
 import express from 'express';
+import { textManager } from './textManager.js';
 
 
 // Classe contenente le informazioni del server
@@ -42,7 +43,8 @@ export class serverManager {
     //  Avvia il server e stampa nella console il messaggio con l'indirizzo
     startAndDisplayStatus = (app, portToUse) => {
         app.listen(portToUse, () => {
-            console.log(`💻: ${this.getServerURL()}`);
+            let text = new textManager(this.getServerURL(), 'warning')
+            console.log(text.generateBulletItem());
         });
     }
 
