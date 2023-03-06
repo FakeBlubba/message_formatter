@@ -16,15 +16,30 @@ export class serverManager {
     getProtocol = () => {
         return this.protocol;
     };
+
+    //  Imposta il protocollo
+    setProtocol = (newProtocol) => {
+        this.protocol = newProtocol;
+    };
     
     //  Restituisce l'indirizzo ('localhost:')
     getAddress = () => {
         return this.address;
     };
 
-    // Restituisce la porte (3000)
+    //  Imposta l'indirizzo
+    setAddress = (newAddress) => {
+        this.address = newAddress;
+    };
+
+    //  Restituisce la porta (3000)
     getPort = () => {
         return this.port;
+    };
+
+    //  Imposta il numero di porta
+    setPort = (newPort) => {
+        this.port = newPort;
     };
 
     //  Restituisce la concatenazione delle tre proprietà
