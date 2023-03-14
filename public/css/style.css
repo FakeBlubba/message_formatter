@@ -384,6 +384,39 @@ code {
   margin-top: 10em;
 }
 
+.chat-bubble {
+  margin: auto;
+  cursor:pointer;
+  display: inline-block;
+  position: relative;
+  background-color: #dcf8c6;
+  border-radius: 20px;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  line-height: 1.2;
+  max-width: 60%;
+  margin-bottom: 10px;
+}
+
+.chat-bubble span {
+  display: block;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.chat-bubble .sender-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-image: url('https://via.placeholder.com/20x20');
+  background-size: cover;
+}
+
+
 
 @media only screen and (max-width: 768px) {
 
