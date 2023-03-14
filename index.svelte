@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="keywords" content="Sacra Vola del Toson d'Oro, SVTO, Goliardia, Cornus">
-    <meta name="description" content="Sito ad uso privato per l'amministrazione di una confraternita studentesca.">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="keywords" content="Sacra Vola del Toson d'Oro, SVTO, Goliardia, Cornus" />
+    <meta name="description" content="Sito ad uso privato per l'amministrazione di una confraternita studentesca." />
     <meta name="author" content="Keglebitch">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link  rel="stylesheet" href="css/style.css"  type="text/css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="media\favicon.png">
     <title>Pannello del Vassallo</title>
 </head>
@@ -74,12 +74,33 @@
         <input type="button" id="enter" class="btns i_fields" value="Invia" />
         <input type="reset" id="res" class="btns i_fields"/>
       </form>
+      <script>
+        let count = 0;
+      
+        function increment() {
+          count += 1;
+        }
+      
+        function decrement() {
+          count -= 1;
+        }
+      </script>
+      
+      <button on:click={increment}>Increment</button>
+      <p>Count: {count}</p>
+      <button on:click={decrement}>Decrement</button>
+      
+      <style>
+        button, p {
+          font-size: 18px;
+        }
+      </style>
       </div>
-      <div class="chat-bubble">
+      <!--<div class="chat-bubble">
         <span>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut dapibus velit.
         </span>
-      </div>
+      </div>-->
     </div>
   </div>
       
