@@ -1,93 +1,87 @@
 import emoji from 'node-emoji';
 
-//  TODO    Metodi statici
 //  TODO    RINOMINARE CARTELLA MODULI
 export class BulletTextsGenerator {
     constructor(text, context) {
-        this.text = text
-        this.context = context  //e.g.: 'warning', 'location', 'time'
+      this.text = text;
+      this.context = context; //e.g.: 'warning', 'location', 'time'
     }
-
-
+  
     //  Restituisce il testo
-    getText = () => {
-        return this.text;
+    static getText = () => {
+      return BulletTextsGenerator.text;
     };
-
-
+  
     //  Restituisce il contesto
-    getContext = () => {
-        return this.context;
+    static getContext = () => {
+      return BulletTextsGenerator.context;
     };
-
-
+  
     //  Aggiorna il testo
-    setText = (newText) => {
-        this.text = newText;
+    static setText = (newText) => {
+      BulletTextsGenerator.text = newText;
     };
-
-
+  
     //  Aggiorna il contesto
-    setContext = (newContext) => {
-        this.context = newContext;
+    static setContext = (newContext) => {
+      BulletTextsGenerator.context = newContext;
     };
-
-
+  
     //  Aggiorna tutte le proprietà della classe
-    setContextAndText = (newContext, newText) => {
-        this.setContext(newContext);
-        this.setText(newText);
-    };
+    static setContextAndText = (newContext, newText) => {
+      BulletTextsGenerator.setContext(newContext);
+      BulletTextsGenerator.setText(newText);
+    };  
 
 
-    //  Restituisce la concatenazione dei tre parametri
-    combineLink = (protocol, address, port) => {
+   //  Restituisce la concatenazione dei tre parametri
+    static combineLink = (protocol, address, port) => {
         return `${protocol}://${address}:${port}`;
     };
 
 
     //  Dato il parametro restituisce l'emoji in questione
-    getEmoji = () => {
-        const context = this.getContext();
+    static getEmoji = () => {
+        const context = BulletTextsGenerator.getContext();
         return emoji.emojify(`:${context}:`);
     };
 
 
     //  Genera un elenco puntato del tipo "🖤: non amo le minoranze"
-    generateBulletItem = () => {
-        const text = this.getText();
-        const emojiToUse = this.getEmoji();
+    static generateBulletItem = (text, context) => {
+        BulletTextsGenerator.setContextAndText(context, text);
+        const emojiToUse = BulletTextsGenerator.getEmoji();
         return `${emojiToUse}: ${text}`;
     };
 
-    
+
     //  Aggiorna l'oggetto BulletTextsGenerator con un generico elemento
-    generateMiscText = (newContext) => {
-        
-        const output = this.preprocessPunctuation();
-        this.setContextAndText(newContext, this.toBold(output));
+    static generateMiscText = (newContext) => {
+    
+        const output = BulletTextsGenerator.preprocessPunctuation();
+        BulletTextsGenerator.setContextAndText(newContext, BulletTextsGenerator.toBold(output));
     };
 
-    
+
     //  Aggiorna l'oggetto BulletTextsGenerator con la stringa sui vestiti
-    generateClothesText = (clothes) => {
+    static generateClothesText = (clothes) => {
 
         let output;
-        
+    
         switch(clothes) {
             case 0:
-                output = this.preprocessPunctuation('Effetti al completo');
-                this.setContextAndText('t-shirt', this.toBold(output));
+                output = BulletTextsGenerator.preprocessPunctuation('Effetti al completo');
+                BulletTextsGenerator.setContextAndText('t-shirt', BulletTextsGenerator.toBold(output));
                 break;
 
             case 1:
-                output = this.preprocessPunctuation('Placca e feluca');
-                this.setContextAndText('necklace', this.toBold(output));
+                output = BulletTextsGenerator.preprocessPunctuation('Placca e feluca');
+                BulletTextsGenerator.setContextAndText('necklace', BulletTextsGenerator.toBold(output));
                 break;
 
             case 2:
-                output = this.preprocessPunctuation('Niente effetti');
-                this.setContextAndText('underwear', this.toBold(output));
+                output = BulletTextsGenerator.preprocessPunctuation('Niente effetti');
+                BulletTextsGenerator.setContextAndText('underwear', BulletTextsGenerator.toBold(output));
                 break;
 
             default:
@@ -98,26 +92,24 @@ export class BulletTextsGenerator {
 
 
     //  Aggiorna l'oggetto BulletTextsGenerator con la descrizione dell'utente
-    generateDescriptionText = () => {
+    static generateDescriptionText = () => {
 
-        const description = this.preprocessPunctuation();
-        this.setText(description);
+        const description = BulletTextsGenerator.preprocessPunctuation();
+        BulletTextsGenerator.setText(description);
 
     };
 
 
-    //  aggiorna l'oggetto BulletTextsGenerator con il link di della location
-    generateLocationText = (LocationFinderObject) => {
+    //  Aggiorna l'oggetto BulletTextsGenerator con il link di della location
+    static generateLocationText = (LocationFinderObject) => {
 
-        const input = this.toBold(LocationFinderObject.getUserInput());
-        const locationLink = this.toBold(LocationFinderObject.generateLink());
-
-        this.setContextAndText('location', `${input} - ${locationLink}.`);
+        const input = BulletTextsGenerator.toBold(LocationFinderObject.getUserInput());
+        const locationLink = BulletTextsGenerator.toBold(LocationFinderObject.generateLink());
+        BulletTextsGenerator.setContextAndText('location', `${input} - ${locationLink}.`);
     };
-
 
     //  aggiorna l'oggetto BulletTextsGenerator contestualmente al fatto che esista un orario o una data
-    generateDateAndTimeText = (DateConverterObject) => {
+    static generateDateAndTimeText = (DateConverterObject) => {
         
         //  Oggetto contenente le info sulla data e sull'orario
         //  const dm = new DateConverter(dayNumber, monthNumber, year, hour, minutes);
@@ -141,14 +133,8 @@ export class BulletTextsGenerator {
         }  
     };
 
-        
-    /*//  aggiorna tutti i testi
-    generateAllTexts = () => {
-        this.generateTitle();
-    }*/
-
     //  Sistema la punteggiatura
-    preprocessPunctuation = () => {
+    static preprocessPunctuation = () => {
 
         const text = this.getText();
         const lastChar = text.charAt(text.length - 1);
@@ -170,12 +156,12 @@ export class BulletTextsGenerator {
     };
 
     // Formatta il testo in grassetto per WhatsApp
-    toBold = (toBold) => {
+    static toBold = (toBold) => {
         return `*${toBold}*`;
     };
 
     // Formatta il testo in corsivo per WhatsApp
-    toItalic = (toItalic) => {
+    static toItalic = (toItalic) => {
         return `_${toItalic}_`;
     };
 

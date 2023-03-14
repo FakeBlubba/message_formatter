@@ -58,8 +58,8 @@ export class ServerManager {
     //  Avvia il server e stampa nella console il messaggio con l'indirizzo
     startAndDisplayStatus = (app, portToUse) => {
         app.listen(portToUse, () => {
-            let text = new BulletTextsGenerator(this.getServerURL(), 'warning')
-            console.log(text.generateBulletItem());
+            let text = BulletTextsGenerator.generateBulletItem(this.getServerURL(), 'warning');
+            console.log(text);
         });
     }
 
